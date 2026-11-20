@@ -49,3 +49,18 @@ Open the URL Streamlit prints (default `http://localhost:8501`), enter text, and
 - The app is a Streamlit script, not a library. Running `python LanguageDetectionText.py` will not start the UI; use `streamlit run`.
 - Hard-coded Windows paths in the code must be changed before use on another machine.
 - The `DEMO.mp4` file shows the app in use.
+
+## Pretrained models (not included)
+
+This repository does not include the M2M100 translation model because it is a pretrained model that can be downloaded directly:
+
+- **M2M100 418M** (`facebook/m2m100_418M`): https://huggingface.co/facebook/m2m100_418M
+
+Download it with `transformers` and place it in the `models/m2m100/` folder (or load it by its Hugging Face name):
+
+```python
+from transformers import M2M100ForConditionalGeneration, M2M100Tokenizer
+name = "facebook/m2m100_418M"
+tokenizer = M2M100Tokenizer.from_pretrained(name)
+model = M2M100ForConditionalGeneration.from_pretrained(name)
+```
